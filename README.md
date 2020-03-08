@@ -16,6 +16,7 @@ These 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page of
 structured as shown as:
 
 ![Virtual Address](./figs/address.png)
+<img src="./figs/address.png" alt="alt text" width="200">
 
 Other specifics include the following:
 * 2^8 entries in the page table 
