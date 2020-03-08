@@ -78,16 +78,12 @@ recall that it has only sixteen entries, so you will need to use a replacement s
 may use a FIFO policy for updating your TLB.
 
 
-## Page Replacement (version 2)
-Thus far, this project has assumed that physical memory is the same size as the virtual address space. Let us call this 
-version of your code as **version 1**. You may use `v1` as the `main()` function argument when your program is operating
-under **version 1** assumptions.
-
+## Page Replacement
+Thus far, this project has assumed that physical memory is the same size as the virtual address space.
 In practice however, physical memory is typically much smaller than a virtual address space. This version of the project now 
 assumes using a smaller physical address space with 128 page frames rather than 256. This change will require modifying 
 your program so that it keeps track of free page frames as well as implementing a page-replacement policy using 
-LRU (Section 10.4) to resolve page faults when there is no free memory. You may use `v2` as the `main()` function 
- argument when assuming physical address space of 128.
+LRU (Section 10.4) to resolve page faults when there is no free memory.
 
 
 
@@ -118,5 +114,4 @@ do not expect to have a high TLB hit rate.
 ## Deliverables
 Submit a zip file containing all files that are required to build and run the project. 
 This includes the `StartKit`, even if you didn't change anything, the `C` source codes, and your `test.sh` file. 
-Note that in the the `test.sh` file we assume you have only one main source code file which is `mmu.c`. 
 Please do not submit object (.*) files and compiled executables.
