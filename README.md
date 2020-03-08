@@ -39,7 +39,8 @@ number is obtained from the TLB. In the case of a TLB miss, the page table must 
 the frame number is obtained from the page table, or a page fault occurs. A visual representation of the address-translation 
 process is:
 
-![Virtual Address](./figs/vmm.png)
+<img src="./figs/vmm.png" alt="alt text" width="1000">
+
 
 ## Handling Page Faults
 Your program will implement demand paging as described in Section 10.2. The backing store is represented by the file 
