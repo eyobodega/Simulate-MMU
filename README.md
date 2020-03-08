@@ -1,5 +1,5 @@
 ## Design and Implementation of a Virtual Memory Unit (MMU)
-**Out:** March 8, 2020    
+**Out:** March 9, 2020    
 **Due:** April 3, 2020, at 11:59pm
 
 This project consists of writing a program that translates logical to physical addresses for a virtual address space of 
