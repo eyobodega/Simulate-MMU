@@ -1,4 +1,4 @@
-## Design and Implementation of a Virtual Memory Unit
+## Design and Implementation of a Virtual Memory Unit (MMU)
 **Out:** March 8, 2020    
 **Due:** April 3, 2020, at 11:59pm
 
@@ -40,7 +40,6 @@ process is:
 
 ![Virtual Address](./figs/vmm.png)
 
-
 ## Handling Page Faults Your
 Your program will implement demand paging as described in Section 10.2. The backing store is represented by the file 
 BACKING STORE.bin, a binary file of size 65,536 bytes. When a page fault occurs, you will read in a 256-byte page from 
@@ -76,7 +75,10 @@ may use either a FIFO or an LRU policy for updating your TLB.
 
 ## How to Run Your Program
 Your program should run as follows: 
-``` ./a.out addresses.txt ```
+
+``` 
+./a.out addresses.txt 
+```
 
 Your program will read in the file addresses.txt, which contains 1,000 logical addresses ranging from 0 to 65535. 
 Your program is to translate each logical address to a physical address and determine the contents of the signed byte 
@@ -87,7 +89,7 @@ Your program is to output the following values:
 
 1. The logical address being translated (the integer value being read from addresses.txt).
 2. The corresponding physical address (what your program translates the logical address to).
-3. The signed byte value stored in physical memory at the translated phys- ical address.
+3. The signed byte value stored in physical memory at the translated physical address.
 
 We also provide the file `correct.txt`, which contains the correct output
 values for the file `addresses.txt`. You should use this file to determine if your program is correctly translating 
@@ -104,5 +106,11 @@ do not expect to have a high TLB hit rate.
 Thus far, this project has assumed that physical memory is the same size as the virtual address space. 
 In practice, physical memory is typically much smaller than a virtual address space. This phase of the project now 
 assumes using a smaller physical address space with 128 page frames rather than 256. This change will require modifying 
-your program so that it keeps track of free page frames as well as implementing a page-replacement policy using either 
-FIFO or LRU (Section 10.4) to resolve page faults when there is no free memory
+your program so that it keeps track of free page frames as well as implementing a page-replacement policy using 
+LRU (Section 10.4) to resolve page faults when there is no free memory.
+
+## Deliverables
+Submit a zip file containing all files that are required to build and run the project. 
+This includes the `StartKit`, even if you didn't change anything, the `C` source codes, and your `test.sh` file. 
+Note that in the the `test.sh` file we assume you have only one main source code file which is `mmu.c`. 
+Please do not submit object (.*) files and compiled executables.
