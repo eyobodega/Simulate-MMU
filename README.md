@@ -79,9 +79,9 @@ may use a FIFO policy for updating your TLB.
 
 
 ## Page Replacement (version 2)
-Thus far, this project has assumed that physical memory is the same size as the virtual address space. Lets' call this 
-version of your code and **version 1**. You may use `v1` as the `main()` function argument when your program is operating
-under **version 1** assumptions. 
+Thus far, this project has assumed that physical memory is the same size as the virtual address space. Let us call this 
+version of your code as **version 1**. You may use `v1` as the `main()` function argument when your program is operating
+under **version 1** assumptions.
 
 In practice however, physical memory is typically much smaller than a virtual address space. This version of the project now 
 assumes using a smaller physical address space with 128 page frames rather than 256. This change will require modifying 
