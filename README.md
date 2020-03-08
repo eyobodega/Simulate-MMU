@@ -80,7 +80,7 @@ may use a FIFO policy for updating your TLB.
 
 ## Page Replacement
 Thus far, this project has assumed that physical memory is the same size as the virtual address space.
-In practice however, physical memory is typically much smaller than a virtual address space. This version of the project now 
+In practice however, physical memory is typically much smaller than a virtual address space. This phase of the project now 
 assumes using a smaller physical address space with 128 page frames rather than 256. This change will require modifying 
 your program so that it keeps track of free page frames as well as implementing a page-replacement policy using 
 LRU (Section 10.4) to resolve page faults when there is no free memory.
@@ -106,8 +106,9 @@ logical to physical addresses.
 
 ## Statistics 
 After completion, your program is to report the following statistics:
-1. Page-fault rate: The percentage of address references that resulted in page faults.
-2. TLB hit rate: The percentage of address references that were resolved in the TLB.
+1. Page-fault rate: the percentage of address references that resulted in page faults.
+2. TLB hit rate: the percentage of address references that were resolved in the TLB.
+
 Since the logical addresses in `addresses.txt` were generated randomly and do not reflect any memory access locality, 
 do not expect to have a high TLB hit rate.
 
