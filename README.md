@@ -15,8 +15,8 @@ you need only be concerned with 16- bit addresses, so you must mask the rightmos
 These 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page offset. Hence, the addresses are 
 structured as shown as:
 
-![Virtual Address](./figs/address.png)
-<img src="./figs/address.png" alt="alt text" width="200">
+<!-- ![Virtual Address](./figs/address.png) -->
+<img src="./figs/address.png" alt="alt text" width="400">
 
 Other specifics include the following:
 * 2^8 entries in the page table 
