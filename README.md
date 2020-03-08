@@ -16,7 +16,7 @@ These 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page of
 structured as shown as:
 
 <!-- ![Virtual Address](./figs/address.png) -->
-<img src="./figs/address.png" alt="alt text" width="400">
+<img src="./figs/address.png" alt="alt text" width="500">
 
 Other specifics include the following:
 * 2^8 entries in the page table 
@@ -64,7 +64,7 @@ its corresponding physical address, and output the value of the signed byte at t
 ## How to Begin
 First, write a simple program that extracts the page number and offset based on:
 
-![Virtual Address](./figs/address.png)
+<img src="./figs/address.png" alt="alt text" width="500">
 
 from the following integer numbers: 
 ```
