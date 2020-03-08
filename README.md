@@ -39,7 +39,7 @@ number is obtained from the TLB. In the case of a TLB miss, the page table must 
 the frame number is obtained from the page table, or a page fault occurs. A visual representation of the address-translation 
 process is:
 
-<img src="./figs/vmm.png" alt="alt text" width="1000">
+<img src="./figs/vmm.png" alt="alt text" width="800">
 
 
 ## Handling Page Faults
