@@ -3,7 +3,7 @@
 **Due:** April 3, 2020, at 11:59pm
 
 This project consists of writing a program that translates logical to physical addresses for a virtual address space of 
-size 2^16 = 65,536 bytes. Your program will read from a file containing logical addresses and, using a TLB and a page 
+size <p>2<sup>16</sup></p> = 65,536 bytes. Your program will read from a file containing logical addresses and, using a TLB and a page 
 table, will translate each logical address to its corresponding physical address and output the value of the byte stored 
 at the translated physical address. Your learning goal is to use simulation to understand the steps involved in translating 
 logical to physical addresses. This will include resolving page faults using demand paging, managing a TLB, and 
@@ -19,10 +19,10 @@ structured as shown as:
 <img src="./figs/address.png" alt="alt text" width="500">
 
 Other specifics include the following:
-* 2^8 entries in the page table 
-* Page size of 2^8 bytes 
+* <p>2<sup>8</sup></p> entries in the page table 
+* Page size of <p>2<sup>8</sup></p> bytes 
 * 16 entries in the TLB 
-* Frame size of 2^8 bytes 
+* Frame size of <p>2<sup>8</sup></p> bytes 
 * 256 frames 
 * Physical memory of 65,536 bytes (256 frames × 256-byte frame size)    
 
