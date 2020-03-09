@@ -118,4 +118,4 @@ do not expect to have a low TLB hit rate.
 ## Deliverables
 Submit a zip file containing all files that are required to build and run the project. 
 This includes the `StartKit`, even if you didn't change anything, the `C` source codes, and your `test.sh` file. 
-Please do not submit object (*.o) files and compiled executables.
+Please do not submit object files (*.o) or compiled executables.
