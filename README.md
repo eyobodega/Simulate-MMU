@@ -69,9 +69,9 @@ First, write a simple program that extracts the page number and offset based on:
 <img src="./figs/address.png" alt="alt text" width="500">
 
 from the following integer numbers: 
-    ```
-    1, 256, 32768, 32769, 128, 65534, 33153
-    ```
+```
+1, 256, 32768, 32769, 128, 65534, 33153
+```
 
 Perhaps the easiest way to do this is by using the operators for bit-masking and bit-shifting. Once you can correctly 
 establish the page number and offset from an integer number, you are ready to begin. Initially, we suggest that you 
