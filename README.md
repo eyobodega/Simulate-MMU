@@ -76,8 +76,8 @@ Perhaps the easiest way to do this is by using the operators for bit-masking and
 establish the page number and offset from an integer number, you are ready to begin. Initially, we suggest that you 
 bypass the TLB and use only a page table. You can integrate the TLB once your page table is working properly. Remember, 
 address translation can work without a TLB; the TLB just makes it faster. When you are ready to implement the TLB, 
-recall that it has only sixteen entries, so you will need to use a replacement strategy when you update a full TLB. You 
-may use a FIFO policy for updating your TLB.
+recall that it has only sixteen entries, so you will need to use a replacement strategy when you update a full TLB. 
+FIFO policy should be used for updating the TLB.
 
 
 ## Page Replacement
@@ -117,4 +117,4 @@ do not expect to have a high TLB hit rate.
 ## Deliverables
 Submit a zip file containing all files that are required to build and run the project. 
 This includes the `StartKit`, even if you didn't change anything, the `C` source codes, and your `test.sh` file. 
-Please do not submit object (.*) files and compiled executables.
+Please do not submit object (*.o) files and compiled executables.
