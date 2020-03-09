@@ -9,7 +9,7 @@ at the translated physical address. Your learning goal is to use simulation to u
 logical to physical addresses. This will include resolving page faults using demand paging, managing a TLB, and 
 implementing a page-replacement algorithm.
 
-## Details
+### Details
 Your program will read a file containing several 32-bit integer numbers that represent logical addresses. However, 
 you need only be concerned with 16- bit addresses, so you must mask the rightmost 16 bits of each logical address. 
 These 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page offset. Hence, the addresses are 
@@ -31,7 +31,7 @@ Additionally, your program need only be concerned with reading logical
 addresses and translating them to their corresponding physical addresses. You do not need to support writing to the 
 logical address space.
 
-## Address Translation
+### Address Translation
 
 Your program will translate logical to physical addresses using a TLB and page table as outlined in Section 9.3. First, 
 the page number is extracted from the logical address, and the TLB is consulted. In the case of a TLB hit, the frame
@@ -42,7 +42,7 @@ process is:
 <img src="./figs/vmm.png" alt="alt text" width="800">
 
 
-## Handling Page Faults
+### Handling Page Faults
 Your program will implement demand paging as described in Section 10.2. The backing store is represented by the file 
 `BACKING STORE.bin`, a binary file of size 65,536 bytes located in `StartKit` directory. When a page fault occurs, you 
 will read in a 256-byte page from 
@@ -58,12 +58,12 @@ of the virtual address space, i.e., 65,536 bytes, so you do not need to be conce
 we describe a modification to this project using a smaller amount of physical memory; at that point, a page-replacement 
 strategy will be required.
 
-## Test Files Located in StartKit
+### Test Files Located in StartKit
 We provide the file `addresses.txt`, which contains integer values representing logical addresses ranging from 0 to 65535 
 (the size of the virtual address space). Your program will open this file, read each logical address and translate it to 
 its corresponding physical address, and output the value of the signed byte at the physical address.
 
-## How to Begin
+### How to Begin
 First, write a simple program that extracts the page number and offset based on:
 
 <img src="./figs/address.png" alt="alt text" width="500">
@@ -80,8 +80,7 @@ address translation can work without a TLB; the TLB just makes it faster. When y
 recall that it has only sixteen entries, so you will need to use a replacement strategy when you update a full TLB. 
 FIFO policy should be used for updating the TLB.
 
-
-## Page Replacement
+### Page Replacement
 Thus far, this project has assumed that physical memory is the same size as the virtual address space.
 In practice however, physical memory is typically much smaller than a virtual address space. This phase of the project now 
 assumes using a smaller physical address space with 128 page frames rather than 256. This change will require modifying 
@@ -89,8 +88,7 @@ your program so that it keeps track of free page frames as well as implementing 
 LRU (Section 10.4) to resolve page faults when there is no free memory.
 
 
-
-## How to Run Your Program
+### How to Run Your Program
 You should edit the `test.sh` file to run your program. By doing so, your program will read in the file `addresses.txt`, 
 which contains 1,000 logical addresses ranging from 0 to 65535. 
 Your program is to translate each logical address to a physical address and determine the contents of the signed byte 
@@ -107,7 +105,7 @@ We also provide the file `correct.txt`, which contains the correct output
 values for the file `addresses.txt`. You should use this file to determine if your program is correctly translating 
 logical to physical addresses.
 
-## Statistics 
+### Statistics 
 After completion, your program is to report the following statistics:
 1. Page-fault rate: the percentage of address references that resulted in page faults.
 2. TLB hit rate: the percentage of address references that were resolved in the TLB.
@@ -115,7 +113,7 @@ After completion, your program is to report the following statistics:
 Since the logical addresses in `addresses.txt` were generated randomly and do not reflect any memory access locality, 
 do not expect to have a low TLB hit rate.
 
-## Deliverables
+### Deliverables
 Submit a zip file containing all files that are required to build and run the project. 
 This includes the `StartKit`, even if you didn't change anything, the `C` source codes, and your `test.sh` file. 
 Please do not submit object files (*.o) or compiled executables.
