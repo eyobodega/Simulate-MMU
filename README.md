@@ -113,7 +113,7 @@ After completion, your program is to report the following statistics:
 2. TLB hit rate: the percentage of address references that were resolved in the TLB.
 
 Since the logical addresses in `addresses.txt` were generated randomly and do not reflect any memory access locality, 
-do not expect to have a high TLB hit rate.
+do not expect to have a low TLB hit rate.
 
 ## Deliverables
 Submit a zip file containing all files that are required to build and run the project. 
