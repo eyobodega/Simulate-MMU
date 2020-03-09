@@ -19,10 +19,10 @@ structured as shown as:
 <img src="./figs/address.png" alt="alt text" width="500">
 
 Other specifics include the following:
-* <p>2<sup>8</sup></p> entries in the page table 
-* Page size of <p>2<sup>8</sup></p> bytes 
+* 2<sup>8</sup> entries in the page table 
+* Page size of 2<sup>8</sup> bytes 
 * 16 entries in the TLB 
-* Frame size of <p>2<sup>8</sup></p> bytes 
+* Frame size of 2<sup>8</sup> bytes 
 * 256 frames 
 * Physical memory of 65,536 bytes (256 frames × 256-byte frame size)    
 
@@ -44,7 +44,8 @@ process is:
 
 ## Handling Page Faults
 Your program will implement demand paging as described in Section 10.2. The backing store is represented by the file 
-`BACKING STORE.bin`, a binary file of size 65,536 bytes located in `StartKit` directory. When a page fault occurs, you will read in a 256-byte page from 
+`BACKING STORE.bin`, a binary file of size 65,536 bytes located in `StartKit` directory. When a page fault occurs, you 
+will read in a 256-byte page from 
 the file BACKING STORE and store it in an available page frame in physical memory. For example, if a logical address with 
 page number 15 resulted in a page fault, your program would read in page 15 from BACKING STORE (remember that pages 
 begin at 0 and are 256 bytes in size) and store it in a page frame in physical memory. Once this frame is stored (and 
