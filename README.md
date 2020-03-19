@@ -107,7 +107,7 @@ values for the file `addresses.txt`. You should use this file to determine if yo
 logical to physical addresses. 
 
 ### Statistics 
-After completion, your program is to report the following statistics in the standard output (i.e., stdout):
+After completion, your program is to report the following statistics in the standard output (i.e., stdout) as well:
 1. Page-fault rate: the percentage of address references that resulted in page faults.
 2. TLB hit rate: the percentage of address references that were resolved in the TLB.
 
