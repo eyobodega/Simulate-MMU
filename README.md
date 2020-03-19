@@ -95,18 +95,19 @@ Your program is to translate each logical address to a physical address and dete
 stored at the correct physical address. (Recall that in the C language, the char data type occupies a byte of storage, 
 so we suggest using char values.)
 
-Your program is to output the following values:
+Your program is to output the following values in a comma-separated values (CSV) file called `output.csv` which has 
+three columns:
 
-1. The logical address being translated (the integer value being read from `addresses.txt`).
-2. The corresponding physical address (what your program translates the logical address to).
-3. The signed byte value stored in physical memory at the translated physical address.
+* Column 1: the logical address being translated (the integer value being read from `addresses.txt`).
+* Column 2: the corresponding physical address (what your program translates the logical address to).
+* Column 3: the signed byte value stored in physical memory at the translated physical address.
 
-We also provide the file `correct.txt`, which contains the correct output
+We also provide the file `correct.txt`, which contains the correct physical address
 values for the file `addresses.txt`. You should use this file to determine if your program is correctly translating 
-logical to physical addresses.
+logical to physical addresses. 
 
 ### Statistics 
-After completion, your program is to report the following statistics:
+After completion, your program is to report the following statistics in the standard output (i.e., stdout):
 1. Page-fault rate: the percentage of address references that resulted in page faults.
 2. TLB hit rate: the percentage of address references that were resolved in the TLB.
 
