@@ -1,6 +1,6 @@
 ## Design and Implementation of a Virtual Memory Unit (MMU)
 **Out:** March 9, 2020    
-**Due:** April 3, 2020, at 11:59pm
+**Due:** April 6, 2020, at 11:59pm
 
 This project consists of writing a program that translates logical to physical addresses for a virtual address space of 
 size 2<sup>16</sup> = 65,536 bytes. Your program will read from a file containing logical addresses and, using a TLB and a page 
