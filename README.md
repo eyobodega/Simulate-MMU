@@ -118,3 +118,11 @@ do not expect to have a high TLB hit rate.
 Submit a zip file containing all files that are required to build and run the project. 
 This includes the `StartKit`, even if you didn't change anything, the `C` source codes, and your `test.sh` file. 
 Please do not submit object files (*.o) or compiled executables.
+
+### Grading Schema
+| Item        | Mark           | 
+| :------------- |:-------------:|
+| Correct output.csv file      | 7 |
+| Correct statistics for no page replacement      | 3      |
+| Correct page replacement implementatoin  | 5    |
+| **Sum** | **15** |
