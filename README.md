@@ -124,5 +124,5 @@ Please do not submit object files (*.o) or compiled executables.
 | :------------- |:-------------:|
 | Correct output.csv file      | 7 |
 | Correct statistics for no page replacement      | 3      |
-| Correct page replacement implementatoin  | 5    |
+| Correct page replacement implementation  | 5    |
 | **Sum** | **15** |
