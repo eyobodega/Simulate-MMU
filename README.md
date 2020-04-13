@@ -122,7 +122,8 @@ Please do not submit object files (*.o) or compiled executables.
 ### Grading Schema
 | Item        | Mark           | 
 | :------------- |:-------------:|
-| Correct output.csv file      | 7 |
-| Correct statistics for no page replacement      | 3      |
-| Correct page replacement implementation  | 5    |
+| Correct output.csv file for no page replacement       | 7 |
+| Correct statistics for no page replacement            | 3      |
+| Correct output.csv file for page replacement          | 3.5    |
+| Correct statistics for page replacement               | 1.5    |
 | **Sum** | **15** |
