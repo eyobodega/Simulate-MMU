@@ -56,11 +56,6 @@ you can randomly seek to certain positions of the file for reading. We suggest u
 for performing I/O, including `fopen()`, `fread()`, `fseek()`,and `fclose()`. The size of physical memory is the same as the size
 of the virtual address space, i.e., 65,536 bytes, so you do not need to be concerned about page replacements during a page fault at this phase. Later, in phase 2, we describe a modification to this project assuming a smaller amount of physical memory, for which, a  page-replacement strategy will be required.
 
-### Test Files Located in StartKit
-We provide the file `addresses.txt`, which contains integer values representing logical addresses ranging from 0 to 65535 
-(the size of the virtual address space). Your program will open this file, read each logical address and translate it to 
-its corresponding physical address, and output the value of the signed byte at the physical address.
-
 ### How to Begin
 First, write a simple program that extracts the page number and offset based on:
 
@@ -98,18 +93,24 @@ Your program is to output a comma-separated values (CSV) file that has three col
 * Column 2: the corresponding physical address (what your program translates the logical address to).
 * Column 3: the signed byte value (i.e., the binary value) stored in physical memory at the translated physical address.
 
-We also provided the file `correct256.csv`, which contains the correct output for the file `addresses.txt` at phase 1 of the project. You can use this file and `test.sh` file to determine if your program is working correctly at phase 1. 
-
 ### Statistics 
 After completion, your program is to report the following statistics at the end of `csv` files:
 1. Page-fault rate: the percentage of address references that resulted in page faults.
 2. TLB hit rate: the percentage of address references that were resolved in the TLB.
 
-Please check the end of file `correct256.csv` to see the correct format for reporting the statistics. Since the logical addresses in `addresses.txt` were generated randomly and do not reflect any memory access locality, 
+Please check the end of file `correct256.csv` to see the correct format for reporting the statistics. 
+Since the logical addresses in `addresses.txt` were generated randomly and do not reflect any memory access locality, 
 do not expect to have a high TLB hit rate.
 
+### How to Test Your Project
+We provided the file `addresses.txt`, which contains integer values representing logical addresses ranging from 0 to 65535 
+(the size of the virtual address space). Your program will open this file, read each logical address and translate it to 
+its corresponding physical address, and output the value of the signed byte at the physical address. The file `correct256.csv` 
+contains the correct output for phase 1 of this project. You first need to complete the `Makefile` and then modify/use 
+`test.sh` script to test your project. 
+
 ### Deliverables
-Submit a zip file, `project3.zip` containing all files that are required to build and run the project, including:
+Submit a zip file, `project3.zip` containing all files that are required to build and run your project, including:
 
     1) Makefile
     2) All C source or header files

@@ -1,4 +1,4 @@
-# makefile for Virtual Memeory Unit
+# makefile for Virtual Memeory Unit (MMU)
 #
 # make mmu 
 
