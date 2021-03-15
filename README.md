@@ -81,7 +81,7 @@ your program so that it keeps track of free page frames as well as implementing 
 LRU (Section 10.4) to resolve page faults when there is no free memory.
 
 
-### How should Your Project work
+### How should Your Project Work
 Your program should read in the file `addresses.txt`, 
 which contains 1,000 logical addresses ranging from 0 to 65535. 
 Your program is to translate each logical address to a physical address and determine the contents of the signed byte 
@@ -110,7 +110,7 @@ contains the correct output for phase 1 of this project. You first need to compl
 `test.sh` script to test your project. 
 
 ### Deliverables
-Submit a zip file, `project3.zip` containing all files that are required to build and run your project, including:
+Submit a zip file, `project3.zip`, containing all files that are required to build and run your project, including:
 
     1) Makefile
     2) All C source or header files
@@ -127,8 +127,8 @@ The TAs will use `test.sh` bash script to grade your project. Even one incorrect
 
 | Item        | Mark           | 
 | :------------- |:-------------:|
-| Correct `output256.csv` file for no page replacement       | 7 |
-| Correct statistics for no page replacement            | 3 |
-| Correct `output128.csv` file for page replacement          | 7 |
-| Correct statistics for page replacement               | 3 |
+| Correct `output256.csv` file for no page replacement       | 6 |
+| Correct statistics for no page replacement                 | 2 |
+| Correct `output128.csv` file for page replacement          | 9 |
+| Correct statistics for page replacement                    | 3 |
 | **Sum** | **20** |
