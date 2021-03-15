@@ -9,7 +9,7 @@ at the translated physical address. Your learning goal is to use simulation to u
 logical to physical addresses. This will include resolving page faults using demand paging, managing a TLB, and 
 implementing a page-replacement algorithm.
 
-### More Specifications 
+### More Specifications   
 Your program will read a file containing several 32-bit integer numbers that represent logical addresses. However, 
 you need only be concerned with 16-bit addresses, so you must mask (i.e., ignore) the highest 16 bits of each logical address. 
 The lowest 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page offset. Hence, the addresses are 
