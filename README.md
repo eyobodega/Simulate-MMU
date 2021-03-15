@@ -86,26 +86,24 @@ your program so that it keeps track of free page frames as well as implementing 
 LRU (Section 10.4) to resolve page faults when there is no free memory.
 
 
-### How to Run Your Program
-You should edit the `test.sh` file to run your program. By doing so, your program will read in the file `addresses.txt`, 
+### How should Your Project work
+<!-- You may edit the `test.sh` file to test your program.  -->
+
+Your program should read in the file `addresses.txt`, 
 which contains 1,000 logical addresses ranging from 0 to 65535. 
 Your program is to translate each logical address to a physical address and determine the contents of the signed byte 
-stored at the correct physical address. (Recall that in the C language, the char data type occupies a byte of storage, 
-so we suggest using char values.)
+stored at the correct physical address. (Recall that in the C language, the char data type occupies a byte of storage, so we suggest using char values.)
 
-Your program is to output a comma-separated values (CSV) file called `output.csv` that has 
-three columns:
+Your program is to output a comma-separated values (CSV) file that has three columns:
 
 * Column 1: the logical address being translated (the integer value being read from `addresses.txt`).
 * Column 2: the corresponding physical address (what your program translates the logical address to).
 * Column 3: the signed byte value (i.e., the binary value) stored in physical memory at the translated physical address.
 
-We also provided the file `correct.txt`, which contains the correct physical address
-values for the file `addresses.txt`. You should use this file to determine if your program is correctly translating 
-logical to physical addresses. 
+We also provided the file `correct256.csv`, which contains the correct output for the file `addresses.txt` at phase 1 of the project. You can use this file and `test.sh` file to determine if your program is working correctly at phase 1. 
 
 ### Statistics 
-After completion, your program is to report the following statistics in the standard output (i.e., stdout) as well:
+After completion, your program is to report the following statistics at the end of `csv` files:
 1. Page-fault rate: the percentage of address references that resulted in page faults.
 2. TLB hit rate: the percentage of address references that were resolved in the TLB.
 
@@ -113,15 +111,25 @@ Since the logical addresses in `addresses.txt` were generated randomly and do no
 do not expect to have a high TLB hit rate.
 
 ### Deliverables
-Submit a zip file, `project3.zip` containing all files that are required to build and run the project. 
-This includes the `StartKit`, even if you didn't change anything, the `C` source codes, and your `test.sh` file. 
+Submit a zip file, `project3.zip` containing all files that are required to build and run the project, including:
+
+    1) Makefile
+    2) All C source files
+    3) BACKING_STORE.bin
+    4) addresses.txt
+    5) correct.txt
+
 Please do not submit object files (*.o) or compiled executables.
 
-### Grading Schema
+### Grading 
+The TAs will use `test.sh` file to grade your project. Even one incorrect line in `csv` files will result in 0. 
+For statistics, set the floating point precision to 2. 
+
+
 | Item        | Mark           | 
 | :------------- |:-------------:|
-| Correct output.csv file for no page replacement       | 7 |
+| Correct `output256.csv` file for no page replacement       | 7 |
 | Correct statistics for no page replacement            | 3 |
-| Correct output.csv file for page replacement          | 7 |
+| Correct `output128.csv` file for page replacement          | 7 |
 | Correct statistics for page replacement               | 3 |
 | **Sum** | **20** |
