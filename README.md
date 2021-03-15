@@ -31,7 +31,8 @@ Additionally, your program need only be concerned with reading logical
 addresses and translating them to their corresponding physical addresses. You do not need to support writing to the 
 logical address space.
 
-### Address Translation
+### Phase 1: 
+#### Address Translation
 
 Your program will translate logical to physical addresses using a TLB and page table as outlined in Section 9.3. First, 
 the page number is extracted from the logical address, and the TLB is consulted. In the case of a TLB hit, the frame
@@ -42,7 +43,7 @@ process is:
 <img src="./figs/vmm.png" alt="alt text" width="800">
 
 
-### Handling Page Faults
+#### Handling Page Faults
 Your program will implement demand paging as described in Section 10.2. The backing store is represented by the file 
 `BACKING_STORE.bin`, a binary file of size 65,536 bytes located in `StartKit` directory. When a page fault occurs, you 
 will read in a 256-byte page from 
@@ -56,7 +57,7 @@ you can randomly seek to certain positions of the file for reading. We suggest u
 for performing I/O, including `fopen()`, `fread()`, `fseek()`,and `fclose()`. The size of physical memory is the same as the size
 of the virtual address space, i.e., 65,536 bytes, so you do not need to be concerned about page replacements during a page fault at this phase. Later, in phase 2, we describe a modification to this project assuming a smaller amount of physical memory, for which, a  page-replacement strategy will be required.
 
-### How to Begin
+#### How to Begin
 First, write a simple program that extracts the page number and offset based on:
 
 <img src="./figs/address.png" alt="alt text" width="500">
@@ -73,7 +74,8 @@ address translation can work without a TLB; the TLB just makes it faster. When y
 recall that it has only **16** entries, so you will need to use a replacement strategy when you update a full TLB. 
 FIFO policy should be used for updating the TLB.
 
-### Phase 2: Page Replacement
+### Phase 2 
+#### Page Replacement
 Thus far, this project has assumed that physical memory is the same size as the virtual address space.
 In practice however, physical memory is typically much smaller than a virtual address space. This phase of the project now 
 assumes using a smaller physical address space with 128 page frames rather than 256. This change will require modifying 
