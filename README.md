@@ -87,8 +87,6 @@ LRU (Section 10.4) to resolve page faults when there is no free memory.
 
 
 ### How should Your Project work
-<!-- You may edit the `test.sh` file to test your program.  -->
-
 Your program should read in the file `addresses.txt`, 
 which contains 1,000 logical addresses ranging from 0 to 65535. 
 Your program is to translate each logical address to a physical address and determine the contents of the signed byte 
@@ -107,23 +105,23 @@ After completion, your program is to report the following statistics at the end 
 1. Page-fault rate: the percentage of address references that resulted in page faults.
 2. TLB hit rate: the percentage of address references that were resolved in the TLB.
 
-Since the logical addresses in `addresses.txt` were generated randomly and do not reflect any memory access locality, 
+Please check the end of file `correct256.csv` to see the correct format for reporting the statistics. Since the logical addresses in `addresses.txt` were generated randomly and do not reflect any memory access locality, 
 do not expect to have a high TLB hit rate.
 
 ### Deliverables
 Submit a zip file, `project3.zip` containing all files that are required to build and run the project, including:
 
     1) Makefile
-    2) All C source files
+    2) All C source or header files
     3) BACKING_STORE.bin
     4) addresses.txt
-    5) correct.txt
+    5) test.sh
+    6) correct256.csv
 
 Please do not submit object files (*.o) or compiled executables.
 
 ### Grading 
-The TAs will use `test.sh` file to grade your project. Even one incorrect line in `csv` files will result in 0. 
-For statistics, set the floating point precision to 2. 
+The TAs will use `test.sh` bash script to grade your project. Even one incorrect line in `csv` files will result in 0. For statistics, set the floating point precision to 2. 
 
 
 | Item        | Mark           | 
