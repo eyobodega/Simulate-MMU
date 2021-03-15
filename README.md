@@ -1,5 +1,5 @@
 ## Design and Implementation of a Virtual Memory Unit (MMU)
-**Out:** March 20, 2021    
+**Out:** March 20, 2021, at 10:00am   
 **Due:** April 11, 2021, at 09:00pm
 
 This project consists of writing a program that translates logical to physical addresses for a virtual address space of 
@@ -11,8 +11,8 @@ implementing a page-replacement algorithm.
 
 ### Details
 Your program will read a file containing several 32-bit integer numbers that represent logical addresses. However, 
-you need only be concerned with 16- bit addresses, so you must mask the rightmost 16 bits of each logical address. 
-These 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page offset. Hence, the addresses are 
+you need only be concerned with 16-bit addresses, so you must mask (i.e., ignore) the highest 16 bits of each logical address. 
+The lowest 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page offset. Hence, the addresses are 
 structured as shown as:
 
 <!-- ![Virtual Address](./figs/address.png) -->
@@ -54,9 +54,7 @@ the page table and TLB are updated), subsequent accesses to page 15 will be reso
 You will need to treat `BACKING_STORE.bin` as a random-access file so that
 you can randomly seek to certain positions of the file for reading. We suggest using the standard C library functions 
 for performing I/O, including `fopen()`, `fread()`, `fseek()`,and `fclose()`. The size of physical memory is the same as the size
-of the virtual address space, i.e., 65,536 bytes, so you do not need to be concerned about page replacements during a page fault. Later, 
-we describe a modification to this project using a smaller amount of physical memory; at that point, a page-replacement 
-strategy will be required.
+of the virtual address space, i.e., 65,536 bytes, so you do not need to be concerned about page replacements during a page fault at this phase. Later, in phase 2, we describe a modification to this project assuming a smaller amount of physical memory, for which, a  page-replacement strategy will be required.
 
 ### Test Files Located in StartKit
 We provide the file `addresses.txt`, which contains integer values representing logical addresses ranging from 0 to 65535 
@@ -80,7 +78,7 @@ address translation can work without a TLB; the TLB just makes it faster. When y
 recall that it has only **16** entries, so you will need to use a replacement strategy when you update a full TLB. 
 FIFO policy should be used for updating the TLB.
 
-### Page Replacement
+### Phase 2: Page Replacement
 Thus far, this project has assumed that physical memory is the same size as the virtual address space.
 In practice however, physical memory is typically much smaller than a virtual address space. This phase of the project now 
 assumes using a smaller physical address space with 128 page frames rather than 256. This change will require modifying 
