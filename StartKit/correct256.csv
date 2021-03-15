@@ -998,5 +998,5 @@
 9929,44745,0
 45563,46075,126
 12107,2635,-46
-Page Faults, Rate, 24.40%
-TLB Hits, Rate, 5.40%
+Page Faults Rate, 24.40%
+TLB Hits Rate, 5.40%
