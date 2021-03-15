@@ -127,8 +127,10 @@ The TAs will use `test.sh` bash script to grade your project. Even one incorrect
 
 | Item        | Mark           | 
 | :------------- |:-------------:|
+|Phase 1|
 | Phase 1: Correct `output256.csv` file for no page replacement       | 6 |
 | Phase 1: Correct statistics for no page replacement                 | 2 |
+|Phase 2|
 | Phase 2: Correct `output128.csv` file for page replacement          | 9 |
 | Phase 2: Correct statistics for page replacement                    | 3 |
 | **Sum** | **20** |
