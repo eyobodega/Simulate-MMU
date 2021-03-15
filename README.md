@@ -125,10 +125,10 @@ Please do not submit object files (*.o) or compiled executables.
 The TAs will use `test.sh` bash script to grade your project. Even one incorrect line in `csv` files will result in 0. For statistics, set the floating point precision to 2. 
 
 
-| Item        | Phase           | Point   | 
-| :------------- |:-------------:|:-------------:|
-| Correct `output256.csv` file for no page replacement | Phase 1|      | 6 |
-| Correct statistics for no page replacement | Phase 1|                | 2 |
-| Correct `output128.csv` file for page replacement | Phase 2|         | 9 |
-| Correct statistics for page replacement | Phase 1|                   | 3 |
+| Item           | Point   | 
+| :------------- |:-------------:|
+| Correct `output256.csv` file for no page replacement       | 6 |
+| Correct statistics for no page replacement                 | 2 |
+| Correct `output128.csv` file for page replacement          | 9 |
+| Correct statistics for page replacement                    | 3 |
 | **Sum** | **20** |
