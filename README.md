@@ -11,8 +11,8 @@ implementing a page-replacement algorithm.
 
 ### More Specifications   
 Your program will read a file containing several 32-bit integer numbers that represent logical addresses. However, 
-you need only be concerned with 16-bit addresses, so you must mask (i.e., ignore) the highest 16 bits of each logical address. 
-The lowest 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page offset. Hence, the addresses are 
+you need only be concerned with 16-bit addresses, so you must mask (i.e., ignore) the high-order 16 bits of each logical address. 
+The low-order 16 bits are divided into (1) an 8-bit page number and (2) an 8-bit page offset. Hence, the addresses are 
 structured as shown as:  
 
 <!-- ![Virtual Address](./figs/address.png) -->
