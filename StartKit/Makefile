@@ -1,6 +1,6 @@
 # makefile for Virtual Memeory Unit (MMU)
 #
-# make mmu 
+# usage: make mmu 
 
 CC=gcc
 CFLAGS=-Wall

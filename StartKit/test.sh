@@ -1,5 +1,5 @@
 #!/bin/bash -e
-echo "Compiling"   
+echo "Compiling and Buidling MMU"   
 make mmu     
 
 echo "--------------- Phase 1 ---------------------"
