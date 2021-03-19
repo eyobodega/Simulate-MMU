@@ -96,7 +96,7 @@ Your program is to output a comma-separated values (csv) file that has three col
 * Column 3: the signed byte value (i.e., the binary value) stored in physical memory at the translated physical address.
 
 ### Statistics 
-After completion, your program is to report the following statistics for both phases at the end of the `csv` files:
+After completion, your program is to report the following statistics for both phase 1 and 2 at the end of the `csv` files:
 1. Page-fault rate: the percentage of address references that resulted in page faults.
 2. TLB hit rate: the percentage of address references that were resolved in the TLB.
 
