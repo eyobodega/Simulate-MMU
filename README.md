@@ -78,7 +78,8 @@ FIFO policy should be used for updating the TLB.
 #### Page Replacement
 Thus far, this project has assumed that physical memory is the same size as the virtual address space.
 In practice however, physical memory is typically much smaller than a virtual address space. This phase of the project now 
-assumes using a smaller physical address space with 128 page frames rather than 256. This change will require modifying 
+assumes using a smaller physical address space with 128 page frames rather than 256. So at this phase, we have 
+2<sup>7</sup> entries in the page table (i.e., 128 pages). This change will require modifying 
 your program so that it keeps track of free page frames as well as implementing a page-replacement policy using 
 LRU (Section 10.4) to resolve page faults when there is no free memory.
 
