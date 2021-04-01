@@ -94,7 +94,7 @@ Your program is to output a comma-separated values (csv) file that has three col
 
 * Column 1: the logical address being translated (the integer value being read from `addresses.txt`).
 * Column 2: the corresponding physical address (what your program translates the logical address to).
-* Column 3: the signed byte value (i.e., the binary value) stored in physical memory at the translated physical address.
+* Column 3: the signed byte value stored in physical memory at the translated physical address.
 
 ### Statistics 
 After completion, your program is to report the following statistics for both phase 1 and 2 at the end of the `csv` files:
