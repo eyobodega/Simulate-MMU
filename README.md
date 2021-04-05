@@ -129,7 +129,13 @@ The TAs will use `test.sh` bash script to grade your project. As can be seen in 
 
     ./mmu 256 BACKING_STORE.bin addresses.txt
 
-in which, your executable, i.e.,__mmu__, will be given 3 parameters: 256 as the size of the physical memory, `BACKING_STORE.bin` and `addresses.txt`, which contains the logical input addresses. At this phase, your program should create a file called  `output256.csv`, which will be compared against the `correct256.csv`. For phase 2, we change the size of the physical memory to 128. Here, your program should create a file called `output128.csv`. 
+in which, your executable, i.e.,__mmu__, will be given 3 parameters: 256 as the size of the physical memory, `BACKING_STORE.bin` and `addresses.txt`, which contains the logical input addresses. At this phase, your program should create a file called  `output256.csv`, which will be compared against the `correct256.csv`. 
+
+For phase 2, we change the size of the physical memory to 128 by running:
+
+    ./mmu 128 BACKING_STORE.bin addresses.txt
+ 
+ Here, your program should create a file called `output128.csv`. 
 
 __Note__: The grading has been automated using the file `test.sh`, so even having one incorrect line in the `csv` files will result in 0. For statistics, you should set the floating point precision to 2. 
 
