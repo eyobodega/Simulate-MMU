@@ -142,8 +142,8 @@ __Note__: The grading has been automated using the file `test.sh`, so even havin
 
 | Item           | Point   | 
 | :------------- |:-------------:|
-| Correct `output256.csv` file for no page replacement       | 6 |
-| Correct statistics for no page replacement                 | 2 |
+| Correct `output256.csv` file for no page replacement       | 6 |  
+| Correct statistics for no page replacement (1 point for TLB-hit rate and 1 for page-fault rate)                 | 2 |   
 | Correct `output128.csv` file for page replacement          | 9 |
-| Correct statistics for page replacement                    | 3 |
+| Correct statistics for page replacement (1.5 points for TLB-hit rate and 1.5 points for page-fault rate)                   | 3 |
 | **Sum** | **20** |
