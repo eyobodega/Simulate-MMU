@@ -10,4 +10,4 @@ clean:
 	rm -rf mmu
 	
 mmu: 
-	$(CC) $(CFLAGS) -o mmu ... 
+	$(CC) $(CFLAGS) -o mmu mmu.c 
