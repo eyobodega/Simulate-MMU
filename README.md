@@ -1,6 +1,6 @@
 ## Design and Implementation of a Virtual Memory Unit (MMU)
-**Out:** March 20, 2021, at 10:00am   
-**Due:** April 11, 2021, at 09:00pm
+**Out:** November 15, 2021, at 09:00am   
+**Due:** December 6, 2021, at 09:00pm
 
 This project consists of writing a program that translates logical to physical addresses for a virtual address space of 
 size 2<sup>16</sup> = 65,536 bytes. Your program will read from a file containing logical addresses and, using a TLB and a page 
@@ -113,7 +113,7 @@ is the correct output for `addresses.txt` for phase 1 of this project. You first
 `test.sh` script to test your project. 
 
 ### Deliverables
-Submit a zip file, `project3.zip`, containing all files that are required to build and run your project, including:
+Submit a zip file, `project_mmu.zip`, containing all files that are required to build and run your project, including:
 
     1) Makefile
     2) All C source or header files
