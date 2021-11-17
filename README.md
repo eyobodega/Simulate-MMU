@@ -120,7 +120,8 @@ Submit a zip file, `project_mmu.zip`, containing all files that are required to 
     3) BACKING_STORE.bin
     4) addresses.txt
     5) test.sh
-    6) correct256.csv
+    6) correct128.csv
+    7) correct256.csv
 
 Please do not submit object files (*.o) or compiled executables.
 
