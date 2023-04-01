@@ -4,6 +4,7 @@
 
 //function prototypes
 void init_page_table();
+int search_page_table(int page_number);
 
 //define sizes
 #define PAGE_TABLE_SIZE 256
@@ -32,12 +33,15 @@ int main(int argc, char *argv[]) {
     // Read file contents into buffer, parse buffer to get page number and offset
     while (fgets(buffer, sizeof(buffer), file_ptr) != NULL){
         int address = atoi(buffer);
-        int page = address >> 8;
+        int page_number = address >> 8;
         int offset = address & 0xFF;
-        // printf("Virtual address %d: ", address);
-        // printf("page number = %d, ", page);
-        // printf("offset = %d\n", offset);
-        //send address to page table
+        
+        //search page table for page number, if found return frame number, if not found return -1
+        int frame = search_page_table(page_number);
+
+        //if frame number is -1, page fault
+        if(frame == -1){
+            printf ("page fault for address %d and page number %d and frame %d", address, page_number, frame);
         
 
 
@@ -47,6 +51,7 @@ int main(int argc, char *argv[]) {
     return 0;
 
 }
+}
 
 //function to intialise page_table_entries all to -1
 void init_page_table(){
@@ -54,4 +59,15 @@ void init_page_table(){
     for(i=0; i < PAGE_TABLE_SIZE; i++){
         page_table[i].valid = -1;
     }
+}
+
+//function to search page table for valid page number, return frame number if found and if not found return -1
+int search_page_table(int page_number){
+    int i;
+    for(i=0; i < PAGE_TABLE_SIZE; i++){
+        if(page_table[i].valid == page_number){
+            return page_table[i].frame;
+        }
+    }
+    return -1;
 }
