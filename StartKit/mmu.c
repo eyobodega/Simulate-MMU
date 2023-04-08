@@ -2,14 +2,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-//function prototypes
-void init_page_table();
-int search_page_table(int page_number);
-int read_backing_store(int page_number, int frame_number, char * argv[]);
-void init_free_frame_list();
-int return_and_remove_free_frame();
-void add_frame_to_tlb(int page_num, int frame_num);
-int search_tlb_table(int page_num);
 
 
 //define sizes
@@ -24,6 +16,7 @@ int search_tlb_table(int page_num);
 typedef struct page_entry {
     int frame_val;
     int valid_val;
+    int last_used;
 } page_table_entry;
 
 //intial page table array as an array of structs page_table_entry
@@ -47,6 +40,13 @@ typedef struct tlb_entry{
     int frame_number;
 } tlb_entry;
 
+//lru_struct
+typedef struct lru_struct{
+    int page_number;
+    int frame_number;
+    int last_used;
+} lru_struct;
+
 //array for struct tlb_entry
 tlb_entry tlb[TLB_SIZE];
 
@@ -62,6 +62,18 @@ int memory_accesss_requests = 0;
 int page_faults = 0;
 int tlb_hits = 0;
 
+//function prototypes
+void init_page_table();
+int search_page_table(int page_number);
+int read_backing_store(int page_number, int frame_number, char * argv[]);
+void init_free_frame_list(char* argv[]);
+int return_and_remove_free_frame();
+void add_frame_to_tlb(int page_num, int frame_num);
+int search_tlb_table(int page_num);
+void init_tlb();
+lru_struct* lru_pagenumber_and_frame();
+
+
 
 int main(int argc, char *argv[]) {
 
@@ -69,7 +81,9 @@ int main(int argc, char *argv[]) {
     init_page_table();
     
     //intialise free frame linked list
-    init_free_frame_list();
+    init_free_frame_list(argv);
+
+    init_tlb();
 
     // pointer to read input file
     FILE *file_ptr;
@@ -77,9 +91,14 @@ int main(int argc, char *argv[]) {
 
     //pointer to output file to write to
     FILE *output_file_ptr;
-    output_file_ptr = fopen("output256.csv", "w+");
-
-    //could change this to accept a file name as a command line argument
+    //check to see if second command line argument is 256 or 128 and output to different files else, print invalid page size
+    if (atoi(argv[1]) == 256)
+        output_file_ptr = fopen("output256.csv", "w+");
+    else if (atoi(argv[1]) == 128)
+        output_file_ptr = fopen("output128.csv", "w+");
+    else
+        printf("Invalid page size");
+    // Open file
     file_ptr = fopen(argv[3], "r");
 
 
@@ -104,10 +123,23 @@ int main(int argc, char *argv[]) {
             //if frame number is -1, page fault
             if(frame == -1){
                 frame = return_and_remove_free_frame();
+                if (frame== -1){
+                    //capture least recently used page number  using lru_pagenumber_and_frame function
+                    lru_struct* lru_result = lru_pagenumber_and_frame();
+                    //make the frame the new free frame and remove the page number from the page table
+                    frame = lru_result->frame_number;
+                    page_table[lru_result->page_number].valid_val = -1;
+                    //free the lru_result
+                    free(lru_result);
+                    //set lru_result to NULL
+                    lru_result = NULL;
+
+                }
                 //read from backing store
                 read_backing_store(page_number, frame, argv);
                 page_table[page_number].frame_val = frame;
                 page_table[page_number].valid_val = 1; 
+                page_table[page_number].last_used = memory_accesss_requests;
              
                 
 
@@ -124,9 +156,9 @@ int main(int argc, char *argv[]) {
 
 
     }
-printf("page_faults %d", page_faults);
-printf("tlb_hits %d", tlb_hits);
-printf("memory_access_requests %d", memory_accesss_requests);
+// printf("page_faults %d", page_faults);
+// printf("tlb_hits %d", tlb_hits);
+// printf("memory_access_requests %d", memory_accesss_requests);
 fprintf(output_file_ptr, "Page Faults Rate, %.2f%%,\n", ((float)page_faults / memory_accesss_requests) * 100);
 fprintf(output_file_ptr, "TLB Hits Rate, %.2f%%,", ((float)tlb_hits / memory_accesss_requests) * 100);
 
@@ -140,37 +172,53 @@ fprintf(output_file_ptr, "TLB Hits Rate, %.2f%%,", ((float)tlb_hits / memory_acc
     
 }
 
+void init_tlb() {
+    for (int i = 0; i < TLB_SIZE; i++) {
+        tlb[i].page_number = -1;
+        tlb[i].frame_number = -1;
+     
+    }
+}
+
+
 //function to intialise page_table_entries all to -1
 void init_page_table(){
     int i;
     for(i=0; i < PAGE_TABLE_SIZE; i++){
         page_table[i].valid_val = -1;
+        // printf("%d",page_table[i].frame_val);
     }
 }
 
 //intialise a free frame linked list from 0 to 255 with the value of frame number being stored in the frame variable
-void init_free_frame_list(){
+void init_free_frame_list(char* argv[]){
     int i;
-    for(i=255; i >= 0; i--){
+    
+    //define the size of the free frame linked list from the command line argument
+    //convert the char* to an int
+    
+   int size_of_ffl = atoi(argv[1])-1;
+//    printf("%d",size_of_ffl);
+    for(i=size_of_ffl; i >= 0; i--){
         free_frame_node *new_node = malloc(sizeof(free_frame_node));
+        // printf(new_node->frame);
         new_node->frame = i;
         new_node->next = head;
         head = new_node;
     }
 }
 
-int search_tlb_table(int page_num){
+int search_tlb_table(int page_num) {
     int i;
-    for (i=0; i<TLB_SIZE; i++){
-        if (tlb[i].page_number == page_num){
+    for (i = 0; i < TLB_SIZE; i++) {
+        if (tlb[i].page_number == page_num) {
             tlb_hits++;
             return tlb[i].frame_number;
-         
         }
     }
     return -1;
-    
 }
+
 
 //function to search page table for valid page number, return frame number if found and if not found return -1
 int search_page_table(int page_number){
@@ -212,6 +260,11 @@ int read_backing_store(int page_number, int frame_number, char * argv[]){
 
 //function to remove first free frame from free frame linked list and return it to be used
 int return_and_remove_free_frame() {
+    //check if the linked list is empty
+    if (head == NULL) {
+        // printf("Linked list is empty");
+        return -1;
+    }
     free_frame_node *temp = head;
     head = head->next;
     int frame = temp->frame;
@@ -219,9 +272,28 @@ int return_and_remove_free_frame() {
     return frame;
 }
 
+//find least recently used frame in the page table
+lru_struct* lru_pagenumber_and_frame(){
+    int i;
+    int min_last_used = page_table[0].last_used;
+
+    lru_struct* lru = (lru_struct*) malloc(sizeof(lru_struct));
+
+    for(i=1; i < PAGE_TABLE_SIZE; i++){
+        if((page_table[i].last_used < min_last_used)&& page_table[i].valid_val == 1){
+                lru->frame_number = page_table[i].frame_val;
+                lru->page_number = i;
+                lru->last_used = page_table[i].last_used;
+
+           ;
+        }
+    }
+    return lru; 
+}
+
 void add_frame_to_tlb(int page_num, int frame_num){
 
-// implement a circular buffer to be used for a FIFO 
+// // implement a circular buffer to be used for a FIFO 
 tlb_replace_index = curr_tlb_size % TLB_SIZE;
 //add frame and page number to the tlb 
 tlb[tlb_replace_index].frame_number = frame_num;
@@ -229,5 +301,5 @@ tlb[tlb_replace_index].page_number = page_num;
 
 curr_tlb_size++;
 
-    
+  
 }
