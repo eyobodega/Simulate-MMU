@@ -113,7 +113,9 @@ int main(int argc, char *argv[]) {
 
          frame = search_tlb_table(page_number);
         if (frame != -1){
-            physical_address = frame * FRAME_SIZE + offset;
+          physical_address = frame * FRAME_SIZE + offset;
+        // page_table[page_number].last_used = memory_accesss_requests;
+        // page_table[tlb[frame].page_number].last_used = memory_accesss_requests;
         }
       
         else {
@@ -139,7 +141,7 @@ int main(int argc, char *argv[]) {
                 read_backing_store(page_number, frame, argv);
                 page_table[page_number].frame_val = frame;
                 page_table[page_number].valid_val = 1; 
-                page_table[page_number].last_used = memory_accesss_requests;
+                // page_table[page_number].last_used = memory_accesss_requests;
              
                 
 
@@ -213,6 +215,7 @@ int search_tlb_table(int page_num) {
     for (i = 0; i < TLB_SIZE; i++) {
         if (tlb[i].page_number == page_num) {
             tlb_hits++;
+            page_table[page_num].last_used = memory_accesss_requests;
             return tlb[i].frame_number;
         }
     }
@@ -223,6 +226,7 @@ int search_tlb_table(int page_num) {
 //function to search page table for valid page number, return frame number if found and if not found return -1
 int search_page_table(int page_number){
     if (page_table[page_number].valid_val == 1){
+        page_table[page_number].last_used = memory_accesss_requests;
         return page_table[page_number].frame_val;
     }
     page_faults++;
@@ -244,6 +248,7 @@ int read_backing_store(int page_number, int frame_number, char * argv[]){
 
     // Seek to the beginning of the file
     fseek(backing_store_ptr, page_number*PAGE_SIZE, SEEK_SET);
+    page_table[page_number].last_used = memory_accesss_requests;
 
     // Read one page from the file
     int physical_memory_offset = frame_number * FRAME_SIZE;
@@ -275,17 +280,29 @@ int return_and_remove_free_frame() {
 //find least recently used frame in the page table
 lru_struct* lru_pagenumber_and_frame(){
     int i;
-    int min_last_used = page_table[0].last_used;
+ int first_valid_index = 0;
+    for (int i = 0; i < PAGE_TABLE_SIZE; i++) {
+        if (page_table[i].valid_val == 1) {
+            first_valid_index = i;
+            break;
+        }
+    }
+    int min_last_used = page_table[first_valid_index].last_used;
 
-    lru_struct* lru = (lru_struct*) malloc(sizeof(lru_struct));
+    lru_struct* lru = (lru_struct*)malloc(sizeof(lru_struct));
+    lru->frame_number = page_table[first_valid_index].frame_val;
+    lru->page_number = first_valid_index;
+    lru->last_used = min_last_used;
+
 
     for(i=1; i < PAGE_TABLE_SIZE; i++){
         if((page_table[i].last_used < min_last_used)&& page_table[i].valid_val == 1){
                 lru->frame_number = page_table[i].frame_val;
                 lru->page_number = i;
                 lru->last_used = page_table[i].last_used;
+                min_last_used = page_table[i].last_used; 
 
-           ;
+           
         }
     }
     return lru; 
@@ -298,6 +315,7 @@ tlb_replace_index = curr_tlb_size % TLB_SIZE;
 //add frame and page number to the tlb 
 tlb[tlb_replace_index].frame_number = frame_num;
 tlb[tlb_replace_index].page_number = page_num;
+page_table[page_num].last_used = memory_accesss_requests;
 
 curr_tlb_size++;
 
