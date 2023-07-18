@@ -1,8 +1,8 @@
-#Memory Management Unit (MMU) Visualizer#
+# Memory Management Unit (MMU) Visualizer #
 
 Welcome to my MMU visualizer project! This program visualizes the working of a simple memory management unit. It reads logical addresses and translates them to their corresponding physical addresses. You can follow along the translation process and observe how the TLB and Page Table operate under different memory conditions.
 
-Overview
+# Overview #
 
 The project contains two phases:
 
@@ -24,7 +24,7 @@ Run make in your terminal to build the project. Then, execute the following comm
 Phase 1: ./mmu 256 BACKING_STORE.bin addresses.txt
 Phase 2: ./mmu 128 BACKING_STORE.bin addresses.txt
 
-Output
+# Output #
 
 The program will output a CSV file (output256.csv for Phase 1, output128.csv for Phase 2) that includes:
 
@@ -33,6 +33,6 @@ The corresponding physical address.
 The signed byte value stored in physical memory at the translated physical address.
 Additionally, the program will report the page-fault rate and the TLB hit rate.
 
-Testing
+# Testing # 
 
 You can use the provided test.sh script to test your project against the correct output files (correct256.csv for Phase 1, correct128.csv for Phase 2).
