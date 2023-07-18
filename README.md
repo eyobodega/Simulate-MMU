@@ -1,4 +1,4 @@
-Memory Management Unit (MMU) Visualizer
+#Memory Management Unit (MMU) Visualizer#
 
 Welcome to my MMU visualizer project! This program visualizes the working of a simple memory management unit. It reads logical addresses and translates them to their corresponding physical addresses. You can follow along the translation process and observe how the TLB and Page Table operate under different memory conditions.
 
